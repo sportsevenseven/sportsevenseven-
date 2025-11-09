@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sport Seven Seven - Sportwetten Community</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0a0e27, #004d40);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0,230,118,0.1) 0%, transparent 70%);
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.2); opacity: 0.8; }
+    }
+
+    h1 {
+      font-size: 3.5em;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 0.3em;
+      background: linear-gradient(45deg, #00e676, #00c853);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: slideDown 1s ease-out;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .subtitle {
+      font-size: 1.3em;
+      margin-bottom: 2em;
+      opacity: 0.9;
+      animation: fadeIn 1.5s ease-out;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .stats {
+      display: flex;
+      gap: 40px;
+      margin: 2em 0;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-box {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 25px 40px;
+      border-radius: 15px;
+      border: 2px solid rgba(0,230,118,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .stat-box:hover {
+      transform: translateY(-5px);
+      border-color: #00e676;
+      box-shadow: 0 10px 30px rgba(0,230,118,0.3);
+    }
+
+    .stat-number {
+      font-size: 2.5em;
+      font-weight: bold;
+      color: #00e676;
+    }
+
+    .stat-label {
+      font-size: 0.9em;
+      opacity: 0.8;
+      margin-top: 5px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 18px 45px;
+      background: linear-gradient(45deg, #00e676, #00c853);
+      color: #101820;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 20px rgba(0,230,118,0.4);
+      position: relative;
+      z-index: 1;
+      margin-top: 1em;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0,230,118,0.6);
+    }
+
+    /* Features Section */
+    .features {
+      padding: 80px 20px;
+      background: rgba(0,0,0,0.3);
+    }
+
+    .section-title {
+      font-size: 2.5em;
+      text-align: center;
+      margin-bottom: 60px;
+      color: #00e676;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      padding: 40px 30px;
+      border-radius: 20px;
+      border: 1px solid rgba(0,230,118,0.2);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      border-color: #00e676;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .feature-icon {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+
+    .feature-title {
+      font-size: 1.4em;
+      margin-bottom: 15px;
+      color: #00e676;
+    }
+
+    .feature-text {
+      opacity: 0.85;
+      line-height: 1.6;
+    }
+
+    /* VIP Kanal Section */
+    .vip-section {
+      padding: 80px 20px;
+      background: rgba(0,0,0,0.2);
+    }
+
+    .vip-container {
+      background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+      border-radius: 30px;
+      padding: 60px 40px;
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vip-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="rgba(138,43,226,0.03)"/></svg>');
+      opacity: 0.1;
+      pointer-events: none;
+    }
+
+    .vip-header {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .vip-header h2 {
+      font-size: 3.5em;
+      font-weight: 900;
+      color: white;
+      letter-spacing: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .vip-text {
+      background: linear-gradient(135deg, #9b00ff 0%, #7700cc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: underline;
+      text-decoration-color: #9b00ff;
+      text-decoration-thickness: 5px;
+    }
+
+    .crown {
+      font-size: 1.2em;
+    }
+
+    .vip-features {
+      list-style: none;
+      margin-bottom: 40px;
+    }
+
+    .vip-feature-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .vip-feature-item:hover {
+      padding-left: 10px;
+      background: rgba(155, 0, 255, 0.05);
+    }
+
+    .vip-feature-item:last-child {
+      border-bottom: none;
+    }
+
+    .vip-bullet {
+      width: 12px;
+      height: 12px;
+      background: linear-gradient(135deg, #9b00ff 0%, #7700cc 100%);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .vip-feature-text {
+      color: white;
+      font-size: 1.8em;
+      font-weight: 900;
+      letter-spacing: 2px;
+      flex-grow: 1;
+    }
+
+    .vip-checkmark {
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8em;
+      flex-shrink: 0;
+    }
+
+    .vip-divider {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+
+    .vip-divider-square {
+      width: 15px;
+      height: 15px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 2px;
+    }
+
+    .vip-price-section {
+      background: linear-gradient(135deg, #9b00ff 0%, #7700cc 100%);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(155, 0, 255, 0.3);
+    }
+
+    .vip-price {
+      font-size: 4em;
+      font-weight: 900;
+      color: white;
+      letter-spacing: 3px;
+    }
+
+    /* How It Works */
+    .how-it-works {
+      padding: 80px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin: 40px 0;
+      padding: 30px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 15px;
+      border-left: 4px solid #00e676;
+    }
+
+    .step-number {
+      font-size: 3em;
+      font-weight: bold;
+      color: #00e676;
+      min-width: 80px;
+    }
+
+    .step-content h3 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    .step-content p {
+      opacity: 0.85;
+      line-height: 1.6;
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 80px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(0,230,118,0.1), rgba(0,200,83,0.1));
+    }
+
+    .cta h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #00e676;
+    }
+
+    .cta p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    /* Footer */
+    footer {
+      padding: 30px;
+      text-align: center;
+      background: rgba(0,0,0,0.4);
+      font-size: 0.9em;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2em;
+      }
+      
+      .stats {
+        gap: 20px;
+      }
+      
+      .stat-box {
+        padding: 20px 30px;
+      }
+      
+      .step {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .step-number {
+        min-width: auto;
+      }
+
+      .vip-container {
+        padding: 40px 25px;
+      }
+
+      .vip-header h2 {
+        font-size: 2.5em;
+        gap: 10px;
+      }
+
+      .vip-feature-text {
+        font-size: 1.3em;
+      }
+
+      .vip-checkmark {
+        width: 40px;
+        height: 40px;
+        font-size: 1.4em;
+      }
+
+      .vip-price {
+        font-size: 3em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .vip-header h2 {
+        font-size: 1.8em;
+      }
+
+      .vip-feature-text {
+        font-size: 1em;
+      }
+
+      .vip-divider-square {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Sport Seven Seven</h1>
+    <p class="subtitle">Gemeinsam erfolgreich wetten – 100% kostenlos</p>
+    
+    <div class="stats">
+      <div class="stat-box">
+        <div class="stat-number">84%</div>
+        <div class="stat-label">Treffquote</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Kostenlos</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Support</div>
+      </div>
+    </div>
+    
+    <a class="btn" href="https://t.me/+AoaIkmYe4xw2Mjc6" target="_blank">🚀 Jetzt beitreten</a>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <h2 class="section-title">Warum Sport Seven Seven?</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚽</div>
+        <h3 class="feature-title">Expertenanalysen</h3>
+        <p class="feature-text">Professionelle Spielanalysen und fundierte Wettempfehlungen von erfahrenen Tippstern.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3 class="feature-title">Statistiken & Daten</h3>
+        <p class="feature-text">Detaillierte Statistiken und Datenanalysen für fundierte Wettentscheidungen.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h3 class="feature-title">Community</h3>
+        <p class="feature-text">Tausche dich mit Gleichgesinnten aus und profitiere von kollektivem Wissen.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3 class="feature-title">Tägliche Tips</h3>
+        <p class="feature-text">Täglich neue Wettempfehlungen für verschiedene Sportarten und Ligen.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">🔔</div>
+        <h3 class="feature-title">Live-Updates</h3>
+        <p class="feature-text">Bleibe immer auf dem Laufenden mit Echtzeit-Benachrichtigungen.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <h3 class="feature-title">Erfolgsquote</h3>
+        <p class="feature-text">Transparente Dokumentation aller Tips mit nachvollziehbarer Erfolgsquote.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIP Kanal Section -->
+  <section class="vip-section">
+    <div class="vip-container">
+      <div class="vip-header">
+        <h2>
+          <span class="crown">👑</span>
+          <span class="vip-text">VIP</span>
+          <span>KANAL</span>
+          <span class="crown">👑</span>
+        </h2>
+      </div>
+
+      <ul class="vip-features">
+        <li class="vip-feature-item">
+          <span class="vip-bullet"></span>
+          <span class="vip-feature-text">4 TÄGLICHE TIPPS</span>
+          <span class="vip-checkmark">✓</span>
+        </li>
+        <li class="vip-feature-item">
+          <span class="vip-bullet"></span>
+          <span class="vip-feature-text">SONDERSCHEINE</span>
+          <span class="vip-checkmark">✓</span>
+        </li>
+        <li class="vip-feature-item">
+          <span class="vip-bullet"></span>
+          <span class="vip-feature-text">VIP - GRUPPE</span>
+          <span class="vip-checkmark">✓</span>
+        </li>
+        <li class="vip-feature-item">
+          <span class="vip-bullet"></span>
+          <span class="vip-feature-text">KAPITALMANAGEMENT</span>
+          <span class="vip-checkmark">✓</span>
+        </li>
+        <li class="vip-feature-item">
+          <span class="vip-bullet"></span>
+          <span class="vip-feature-text">EXPERTEN SUPPORT</span>
+          <span class="vip-checkmark">✓</span>
+        </li>
+        <li class="vip-feature-item">
+          <span class="vip-bullet"></span>
+          <span class="vip-feature-text">EVENTS & BETA-PRODUKTE</span>
+          <span class="vip-checkmark">✓</span>
+        </li>
+        <li class="vip-feature-item">
+          <span class="vip-bullet"></span>
+          <span class="vip-feature-text">PREMIUMVORTEILE</span>
+          <span class="vip-checkmark">✓</span>
+        </li>
+        <li class="vip-feature-item">
+          <span class="vip-bullet"></span>
+          <span class="vip-feature-text">5% RÜCKERSTATTUNG*</span>
+          <span class="vip-checkmark">✓</span>
+        </li>
+      </ul>
+
+      <div class="vip-divider">
+        <span class="vip-divider-square"></span>
+        <span class="vip-divider-square"></span>
+        <span class="vip-divider-square"></span>
+        <span class="vip-divider-square"></span>
+        <span class="vip-divider-square"></span>
+        <span class="vip-divider-square"></span>
+        <span class="vip-divider-square"></span>
+        <span class="vip-divider-square"></span>
+        <span class="vip-divider-square"></span>
+        <span class="vip-divider-square"></span>
+        <span class="vip-divider-square"></span>
+        <span class="vip-divider-square"></span>
+        <span class="vip-divider-square"></span>
+        <span class="vip-divider-square"></span>
+        <span class="vip-divider-square"></span>
+        <span class="vip-divider-square"></span>
+        <span class="vip-divider-square"></span>
+        <span class="vip-divider-square"></span>
+        <span class="vip-divider-square"></span>
+        <span class="vip-divider-square"></span>
+        <span class="vip-divider-square"></span>
+        <span class="vip-divider-square"></span>
+        <span class="vip-divider-square"></span>
+      </div>
+
+      <div class="vip-price-section">
+        <div class="vip-price">25€ - PRO MONAT</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works">
+    <h2 class="section-title">So funktioniert's</h2>
+    
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h3>Telegram-Gruppe beitreten</h3>
+        <p>Klicke auf den Button und tritt unserer kostenlosen Telegram-Community bei.</p>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h3>Tips erhalten</h3>
+        <p>Erhalte täglich professionelle Wettempfehlungen direkt auf dein Smartphone.</p>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h3>Erfolgreich wetten</h3>
+        <p>Setze die Tips um und baue dein Wettvermögen kontinuierlich auf.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <h2>Bereit durchzustarten?</h2>
+    <p>Werde Teil unserer erfolgreichen Community und starte noch heute!</p>
+    <a class="btn" href="https://t.me/+AoaIkmYe4xw2Mjc6" target="_blank">💎 Kostenlos zur Telegram-Gruppe</a>
+  </section>
+
+  <footer>
+    <p>© 2025 Sport Seven Seven | Verantwortungsvoll wetten | 18+</p>
+    <p style="margin-top: 10px; font-size: 0.85em;">
+      Glücksspiel kann süchtig machen. Bitte spiele verantwortungsvoll.
+      Du allein trägst die Verantwortung für dein eigenes Spielverhalten.
+    </p>
+  </footer>
+</body>
+</html>
