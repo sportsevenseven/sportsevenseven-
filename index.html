@@ -3,333 +3,174 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Sport Seven Seven - Professionelle Sportanalysen Community. Tägliche Tips, Expertenanalysen und Statistiken für sportbegeisterte Nutzer." />
-  
-  <!-- Open Graph / Social Media Meta Tags -->
-  <meta property="og:title" content="Sport Seven Seven - Sportanalysen Community" />
-  <meta property="og:description" content="Professionelle Sportanalysen Community mit täglichen Tips und Experten-Insights" />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="de_DE" />
-  
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.ico" sizes="32x32" />
-  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  
   <title>Sport Seven Seven - Sportanalysen Community</title>
-  
   <style>
-    /* ==========================================================================
-       Custom Properties & Base Styles
-       ========================================================================== */
-    
-    :root {
-      --primary-color: #00e676;
-      --primary-dark: #00c853;
-      --bg-dark: #0a0e27;
-      --bg-medium: #004d40;
-      --text-primary: #ffffff;
-      --text-secondary: rgba(255, 255, 255, 0.85);
-      --glass-bg: rgba(255, 255, 255, 0.05);
-      --glass-border: rgba(0, 230, 118, 0.2);
-      --border-radius: 20px;
+    /* Logo Header */
+    .logo-header {
+      padding: 30px 20px;
+      text-align: center;
+      background: rgba(0,0,0,0.2);
+      border-bottom: 2px solid rgba(0,230,118,0.3);
     }
-    
-    *, *::before, *::after {
+
+    .logo {
+      max-width: 350px;
+      height: auto;
+      filter: brightness(0) invert(1);
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    /* Restlicher CSS bleibt gleich */
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
     
-    html {
-      scroll-behavior: smooth;
-    }
-    
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: linear-gradient(135deg, var(--bg-dark), var(--bg-medium));
-      color: var(--text-primary);
-      line-height: 1.6;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0a0e27, #004d40);
+      color: white;
       overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
-    
-    /* Fokus-Styles für Barrierefreiheit */
-    a:focus,
-    button:focus,
-    [tabindex]:focus {
-      outline: 2px solid var(--primary-color);
-      outline-offset: 2px;
-    }
-    
-    /* ==========================================================================
-       Layout-Komponenten
-       ========================================================================== */
-    
-    /* Header */
-    .logo-header {
-      padding: clamp(20px, 5vw, 30px) 20px;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.2);
-      border-bottom: 2px solid var(--glass-border);
-    }
-    
-    .logo {
-      max-width: 350px;
-      height: auto;
-      /* TIPP: Ein weißes Logo statt CSS-Filter für beste Performance */
-      filter: brightness(0) invert(1);
-      transition: transform 0.3s ease;
-    }
-    
-    .logo:hover {
-      transform: scale(1.05);
-    }
-    
-    .logo:focus {
-      outline: 2px solid var(--primary-color);
-      outline-offset: 4px;
-    }
-    
-    /* Main Content */
-    main {
-      min-height: calc(100vh - 200px);
-    }
-    
-    /* Buttons */
+
     .btn {
       display: inline-block;
       padding: 18px 45px;
-      background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+      background: linear-gradient(45deg, #00e676, #00c853);
       color: #101820;
       text-decoration: none;
       font-weight: bold;
-      font-size: clamp(1em, 2.5vw, 1.1em);
+      font-size: 1.1em;
       border-radius: 50px;
       transition: all 0.3s ease;
-      box-shadow: 0 5px 20px rgba(0, 230, 118, 0.4);
+      box-shadow: 0 5px 20px rgba(0,230,118,0.4);
       margin-top: 1em;
-      border: none;
-      cursor: pointer;
-      text-align: center;
+      margin-bottom: 2em;
     }
-    
+
     .btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 30px rgba(0, 230, 118, 0.6);
+      box-shadow: 0 8px 30px rgba(0,230,118,0.6);
     }
-    
-    .btn:active {
-      transform: translateY(0);
-    }
-    
-    /* ==========================================================================
-       Quick Instruction Banner (NEU - Oben eingefügt)
-       ========================================================================== */
-    
-    .quick-instruction {
-      padding: clamp(30px, 5vw, 40px) 20px;
-      background: linear-gradient(135deg, rgba(0, 230, 118, 0.15), rgba(0, 200, 83, 0.15));
-      border-bottom: 2px solid var(--glass-border);
-    }
-    
-    .quick-instruction .section-title {
-      font-size: clamp(1.5em, 4vw, 2em);
-      margin-bottom: 30px;
-    }
-    
-    .quick-instruction .instruction {
-      margin-bottom: 20px;
-    }
-    
-    /* ==========================================================================
-       Features Section
-       ========================================================================== */
-    
+
     .features {
-      padding: clamp(60px, 8vw, 80px) 20px;
-      background: rgba(0, 0, 0, 0.3);
-    }
-    
-    .section-title {
-      font-size: clamp(2em, 5vw, 2.5em);
+      padding: 80px 20px;
+      background: rgba(0,0,0,0.3);
       text-align: center;
-      margin-bottom: clamp(40px, 6vw, 60px);
-      color: var(--primary-color);
     }
-    
+
+    .section-title {
+      font-size: 2.5em;
+      text-align: center;
+      margin-bottom: 30px;
+      color: #00e676;
+    }
+
     .feature-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: clamp(30px, 4vw, 40px);
+      gap: 40px;
       max-width: 1200px;
       margin: 0 auto;
     }
-    
+
     .feature-card {
-      background: var(--glass-bg);
+      background: rgba(255,255,255,0.05);
       backdrop-filter: blur(10px);
-      padding: clamp(30px, 4vw, 40px) clamp(20px, 3vw, 30px);
-      border-radius: var(--border-radius);
-      border: 1px solid var(--glass-border);
+      padding: 40px 30px;
+      border-radius: 20px;
+      border: 1px solid rgba(0,230,118,0.2);
       transition: all 0.3s ease;
       text-align: center;
     }
-    
+
     .feature-card:hover {
       transform: translateY(-10px);
-      border-color: var(--primary-color);
-      background: rgba(255, 255, 255, 0.1);
+      border-color: #00e676;
+      background: rgba(255,255,255,0.1);
     }
-    
+
     .feature-icon {
-      font-size: clamp(2.5em, 5vw, 3em);
+      font-size: 3em;
       margin-bottom: 20px;
-      display: block;
     }
-    
+
     .feature-title {
-      font-size: clamp(1.2em, 3vw, 1.4em);
+      font-size: 1.4em;
       margin-bottom: 15px;
-      color: var(--primary-color);
+      color: #00e676;
     }
-    
+
     .feature-text {
-      color: var(--text-secondary);
+      opacity: 0.85;
       line-height: 1.6;
     }
-    
-    /* ==========================================================================
-       How It Works Section
-       ========================================================================== */
-    
+
     .how-it-works {
-      padding: clamp(60px, 8vw, 80px) 20px;
+      padding: 80px 20px;
       max-width: 900px;
       margin: 0 auto;
     }
-    
-    .step-list {
-      list-style: none;
-      padding: 0;
-    }
-    
+
     .step {
       display: flex;
       align-items: center;
-      gap: clamp(20px, 3vw, 30px);
-      margin: clamp(30px, 4vw, 40px) 0;
-      padding: clamp(20px, 3vw, 30px);
-      background: var(--glass-bg);
+      gap: 30px;
+      margin: 40px 0;
+      padding: 30px;
+      background: rgba(255,255,255,0.05);
       border-radius: 15px;
-      border-left: 4px solid var(--primary-color);
+      border-left: 4px solid #00e676;
     }
-    
+
     .step-number {
-      font-size: clamp(2.5em, 6vw, 3em);
+      font-size: 3em;
       font-weight: bold;
-      color: var(--primary-color);
+      color: #00e676;
       min-width: 80px;
-      flex-shrink: 0;
     }
-    
+
     .step-content h3 {
-      font-size: clamp(1.3em, 3vw, 1.5em);
+      font-size: 1.5em;
       margin-bottom: 10px;
     }
-    
+
     .step-content p {
-      color: var(--text-secondary);
+      opacity: 0.85;
+      line-height: 1.6;
     }
-    
-    /* ==========================================================================
-       CTA Section
-       ========================================================================== */
-    
+
     .cta {
-      padding: clamp(60px, 8vw, 80px) 20px;
+      padding: 80px 20px;
       text-align: center;
-      background: linear-gradient(135deg, rgba(0, 230, 118, 0.1), rgba(0, 200, 83, 0.1));
+      background: linear-gradient(135deg, rgba(0,230,118,0.1), rgba(0,200,83,0.1));
     }
-    
+
     .cta h2 {
-      font-size: clamp(1.8em, 5vw, 2.5em);
+      font-size: 2.5em;
       margin-bottom: 20px;
-      color: var(--primary-color);
+      color: #00e676;
     }
-    
+
     .cta p {
-      font-size: clamp(1.1em, 3vw, 1.2em);
+      font-size: 1.2em;
       margin-bottom: 30px;
-      color: var(--text-secondary);
+      opacity: 0.9;
     }
-    
-    /* Anleitung-Stil */
-    .instruction {
-      margin: 25px auto 30px;
-      padding: 25px;
-      background: var(--glass-bg);
-      border-radius: 10px;
-      border-left: 4px solid var(--primary-color);
-      font-size: clamp(0.9em, 2.5vw, 0.95em);
-      max-width: 600px;
-      text-align: left;
-    }
-    
-    .instruction strong {
-      color: var(--primary-color);
-    }
-    
-    .code-text {
-      font-family: 'Courier New', monospace;
-      background: rgba(0, 0, 0, 0.3);
-      padding: 2px 6px;
-      border-radius: 3px;
-    }
-    
-    /* Altershinweis */
-    .age-badge {
-      display: inline-block;
-      background: var(--primary-color);
-      color: #101820;
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-weight: bold;
-      font-size: 0.8em;
-      margin-left: 10px;
-    }
-    
-    /* ==========================================================================
-       Footer
-       ========================================================================== */
-    
+
     footer {
-      padding: clamp(20px, 4vw, 30px) 20px;
+      padding: 30px;
       text-align: center;
-      background: rgba(0, 0, 0, 0.4);
-      font-size: clamp(0.85em, 2.5vw, 0.9em);
-      color: var(--text-secondary);
+      background: rgba(0,0,0,0.4);
+      font-size: 0.9em;
+      opacity: 0.7;
     }
-    
-    .footer-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    footer p {
-      margin: 5px 0;
-    }
-    
-    .disclaimer {
-      margin-top: 15px;
-      font-size: 0.85em;
-      line-height: 1.5;
-    }
-    
-    /* ==========================================================================
-       Responsive Design
-       ========================================================================== */
-    
+
     @media (max-width: 768px) {
       .logo {
         max-width: 250px;
@@ -343,213 +184,104 @@
       .step-number {
         min-width: auto;
       }
-      
-      .btn {
-        width: 90%;
-        max-width: 350px;
-        padding: 16px 35px;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .logo {
-        max-width: 200px;
-      }
-    }
-    
-    /* ==========================================================================
-       Utility Classes
-       ========================================================================== */
-    
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border-width: 0;
-    }
-    
-    /* ==========================================================================
-       Print Styles
-       ========================================================================== */
-    
-    @media print {
-      body {
-        background: white;
-        color: black;
-        font-size: 12pt;
-      }
-      
-      .btn, .age-badge {
-        display: none;
-      }
-      
-      .logo {
-        filter: none;
-      }
-      
-      .quick-instruction {
-        display: none;
-      }
     }
   </style>
 </head>
 <body>
-  <!-- =========================================================================
-       Header mit Logo
-       ========================================================================= -->
-  <header class="logo-header">
-    <a href="#top" aria-label="Zur Startseite">
-      <!-- TIPP: SVG-Logo mit weißer Farbe statt CSS-Filter für beste Performance -->
-      <img src="logo.webp" 
-           alt="Sport Seven Seven Logo - Community für Sportanalysen" 
-           class="logo"
-           loading="lazy"
-           width="350"
-           height="auto">
-    </a>
-  </header>
-  
-  <main id="top">
-    <!-- =========================================================================
-         QUICK INSTRUCTION BANNER (NEU - Oben eingefügt)
-         ========================================================================= -->
-    <section class="quick-instruction" aria-labelledby="quick-instruction-title">
-      <h2 class="section-title" id="quick-instruction-title">Schnellstart: So kommst du zur Telegram-Gruppe</h2>
-      <aside class="instruction" aria-label="Kurzanleitung Telegram">
-        <ol>
-          <li><strong>Erster Schritt:</strong> Klicke auf den Link <span class="code-text" aria-label="Telegram Anzeigename">Telegram: @Sportsevenseven</span></li>
-          <li><strong>Zweiter Schritt:</strong> Wenn sich die Seite öffnet, klicke oben rechts auf die drei Punkte (⋮)</li>
-          <li><strong>Dritter Schritt:</strong> Wähle im Menü "Im Browser öffnen" aus</li>
-        </ol>
-        <p style="margin-top: 15px;"><strong>Fertig:</strong> Jetzt öffnet sich die Telegram-Gruppe und du kannst beitreten!</p>
-      </aside>
-      <a class="btn" 
-         href="https://t.me/Sportsevenseven" 
-         target="_blank" 
-         rel="noopener noreferrer"
-         aria-label="Telegram Gruppe Sportsevenseven in neuem Tab öffnen">
-        Telegram: @Sportsevenseven
-      </a>
-    </section>
+  <!-- Logo Header -->
+  <div class="logo-header">
+    <img src="logo.jpg" alt="" class="logo">
+  </div>
 
-    <!-- =========================================================================
-         Features Section
-         ========================================================================= -->
-    <section class="features" aria-labelledby="features-title">
-      <h2 class="section-title" id="features-title">Warum Sport Seven Seven?</h2>
-      <div class="feature-grid">
-        <article class="feature-card">
-          <span class="feature-icon" aria-hidden="true">⚽</span>
-          <h3 class="feature-title">Expertenanalysen</h3>
-          <p class="feature-text">Professionelle Spielanalysen von erfahrenen Sportexperten. Wir durchleuchten Taktiken, Formkurven und spielentscheidende Faktoren.</p>
-        </article>
-        
-        <article class="feature-card">
-          <span class="feature-icon" aria-hidden="true">📊</span>
-          <h3 class="feature-title">Statistiken & Daten</h3>
-          <p class="feature-text">Detaillierte Statistiken und Datenanalysen. Nutze historische Daten und aktuelle Kennzahlen für fundierte Entscheidungen.</p>
-        </article>
-        
-        <article class="feature-card">
-          <span class="feature-icon" aria-hidden="true">💬</span>
-          <h3 class="feature-title">Community</h3>
-          <p class="feature-text">Tausche dich mit Gleichgesinnten aus und profitiere von kollektivem Wissen. Gemeinsam sind wir stärker und erfolgreicher.</p>
-        </article>
-        
-        <article class="feature-card">
-          <span class="feature-icon" aria-hidden="true">🎯</span>
-          <h3 class="feature-title">Tägliche Tips</h3>
-          <p class="feature-text">Täglich neue Vorhersagen für verschiedene Sportarten. Von Fußball bis Basketball – wir decken die wichtigsten Ligen ab.</p>
-        </article>
-        
-        <article class="feature-card">
-          <span class="feature-icon" aria-hidden="true">🔔</span>
-          <h3 class="feature-title">Live-Updates</h3>
-          <p class="feature-text">Bleibe immer auf dem Laufenden mit Echtzeit-Benachrichtigungen. Verpasse keine wichtige Entwicklung mehr.</p>
-        </article>
-        
-        <article class="feature-card">
-          <span class="feature-icon" aria-hidden="true">🏆</span>
-          <h3 class="feature-title">Erfolgsquote</h3>
-          <p class="feature-text">Transparente Dokumentation aller Tips. Verfolge unsere Performance und mach dir dein eigenes Bild.</p>
-        </article>
+  <!-- Features Section -->
+  <section class="features">
+    <h2 class="section-title">Warum Sportsevenseven?</h2>
+    <a class="btn" href="https://t.me/Sportsevenseven" target="_blank">Telegramm:@Sportsevenseven</a>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚽</div>
+        <h3 class="feature-title">Expertenanalysen</h3>
+        <p class="feature-text">Professionelle Spielanalysen von erfahrenen Experten.</p>
       </div>
-    </section>
-
-    <!-- =========================================================================
-         How It Works Section
-         ========================================================================= -->
-    <section class="how-it-works" aria-labelledby="howitworks-title">
-      <h2 class="section-title" id="howitworks-title">So funktioniert's</h2>
-      <ol class="step-list">
-        <li class="step">
-          <span class="step-number" aria-hidden="true">1</span>
-          <div class="step-content">
-            <h3>Community beitreten</h3>
-            <p>Trete unserer kostenlosen Sport-Community bei – ohne versteckte Kosten oder Verpflichtungen.</p>
-          </div>
-        </li>
-        
-        <li class="step">
-          <span class="step-number" aria-hidden="true">2</span>
-          <div class="step-content">
-            <h3>Analysen erhalten</h3>
-            <p>Erhalte täglich professionelle Sport-Analysen und Erkenntnisse direkt in dein Smartphone.</p>
-          </div>
-        </li>
-        
-        <li class="step">
-          <span class="step-number" aria-hidden="true">3</span>
-          <div class="step-content">
-            <h3>Erfolgreich sein</h3>
-            <p>Nutze das Wissen und entwickle dich kontinuierlich weiter – gemeinsam mit unserer Community.</p>
-          </div>
-        </li>
-      </ol>
-    </section>
-
-    <!-- =========================================================================
-         CTA Section
-         ========================================================================= -->
-    <section class="cta" aria-labelledby="cta-title">
-      <h2 id="cta-title">Werden Sie Teil unserer erfolgreichen Community und starten Sie noch heute!</h2>
-      <p>Bleiben Sie immer auf dem Laufenden mit den besten Sport-Analysen.</p>
       
-      <!-- Strukturierte Anleitung mit verbesserter Barrierefreiheit -->
-      <aside class="instruction" aria-labelledby="instruction-title">
-        <strong id="instruction-title">Anleitung: So kommst du zur Telegram-Gruppe</strong><br><br>
-        <ol>
-          <li><strong>Erster Schritt:</strong> Klicke auf den Link <span class="code-text" aria-label="Telegram Anzeigename">Telegram: @Sportsevenseven</span></li>
-          <li><strong>Zweiter Schritt:</strong> Wenn sich die Seite öffnet, klicke oben rechts auf die drei Punkte (⋮)</li>
-          <li><strong>Dritter Schritt:</strong> Wähle im Menü "Im Browser öffnen" aus</li>
-        </ol>
-        <p style="margin-top: 15px;"><strong>Fertig:</strong> Jetzt öffnet sich die Telegram-Gruppe und du kannst beitreten!</p>
-      </aside>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3 class="feature-title">Statistiken & Daten</h3>
+        <p class="feature-text">Detaillierte Statistiken und Datenanalysen für alle Sportarten.</p>
+      </div>
       
-      <!-- Sicherer Link mit rel="noopener noreferrer" -->
-      <a class="btn" 
-         href="https://t.me/Sportsevenseven" 
-         target="_blank" 
-         rel="noopener noreferrer"
-         aria-label="Telegram Gruppe Sportsevenseven in neuem Tab öffnen">
-        Telegram: @Sportsevenseven
-      </a>
-    </section>
-  </main>
-
-  <!-- =========================================================================
-       Footer
-       ========================================================================= -->
-  <footer>
-    <div class="footer-content">
-      <p>© 2025 Sport Seven Seven | Sportliche Analysen <span class="age-badge" aria-label="Nur für Personen ab 18 Jahren geeignet">18+</span></p>
-      <p class="disclaimer">Für sportbegeisterte Nutzer. Bitte nutze Inhalte verantwortungsvoll und im Einklang mit den gesetzlichen Bestimmungen.</p>
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h3 class="feature-title">Community</h3>
+        <p class="feature-text">Tausche dich mit Gleichgesinnten aus und profitiere von kollektivem Wissen.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3 class="feature-title">Tägliche Tips</h3>
+        <p class="feature-text">Täglich neue Vorhersagen für verschiedene Sportarten.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">🔔</div>
+        <h3 class="feature-title">Live-Updates</h3>
+        <p class="feature-text">Bleibe immer auf dem Laufenden mit Echtzeit-Benachrichtigungen.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <h3 class="feature-title">Erfolgsquote</h3>
+        <p class="feature-text">Transparente Dokumentation aller Tips und Ergebnisse.</p>
+      </div>
     </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works">
+    <h2 class="section-title">So funktioniert's</h2>
+    
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h3>Community beitreten</h3>
+        <p>Trete unserer kostenlosen Sport-Community bei.</p>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h3>Analysen erhalten</h3>
+        <p>Erhalte täglich professionelle Sport-Analysen und Erkenntnisse.</p>
+      </div>
+    </div>
+    
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h3>Erfolgreich sein</h3>
+        <p>Nutze das Wissen und entwickle dich kontinuierlich weiter.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <h2>Bereit durchzustarten?</h2>
+    <p>Werde Teil unserer erfolgreichen Community und starte noch heute! Bleiben Sie immer auf dem Laufenden mit den besten Sport-Analysen.</p>
+    <p><strong>Anleitung: So kommst du zur Telegram-Gruppe</strong></p>
+    <p>1. Erster Schritt: Klicke auf den Link Telegram: @Sportsevenseven</p>
+    <p>2. Zweiter Schritt: Wenn sich die Seite öffnet, klicke oben rechts auf die drei Punkte (:)</p>
+    <p>3. Dritter Schritt: Wähle im Menü "Im Browser öffnen" aus</p>
+    <p><strong>Fertig:</strong> Jetzt öffnet sich die Telegram-Gruppe und du kannst beitreten!</p>
+    <a class="btn" href="https://t.me/Sportsevenseven" target="_blank">💎 Telegramm:@Sportsevenseven</a>
+  </section>
+
+  <footer>
+    <p>© 2025 Sport Seven Seven | Sportliche Analysen | 18+</p>
+    <p style="margin-top: 10px; font-size: 0.85em;">
+      Für sportbegeisterte Nutzer. Bitte nutze Inhalte verantwortungsvoll.
+    </p>
   </footer>
 </body>
 </html>
